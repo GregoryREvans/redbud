@@ -402,20 +402,20 @@
                         \startTrillSpan bf
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 2]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            d2
+                            d1
                             \mp
                             \glissando
                             \stopTrillSpan
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            c2
+                            c1
                             \p
                             \<
 
@@ -543,31 +543,28 @@
                         ]
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
 
-                            \override Staff.Stem.stemlet-length = 0.75
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \one-quarter-flat-markup
-                            gf'8
-                            [
+                            gf'4
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            f'8
+                            f'4
 
-                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "8")
+                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "4")
                             \times 2/3 {
 
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \one-quarter-sharp-markup
-                                f'8
+                                f'4
 
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-natural-markup
-                                c'8
+                                c'4
 
-                                \revert Staff.Stem.stemlet-length
                                 <
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \abjad-natural-markup
@@ -575,7 +572,7 @@
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \abjad-natural-markup
                                     g'
-                                >8
+                                >4
                                 ^ \markup {
                                     \upright
                                         \center-column
@@ -585,19 +582,18 @@
                                             }
                                     }
                                 \stopTextSpan
-                                ]
 
                             }
 
                             \clef "bass"
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            a,4.
+                            a,2.
                             \p
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            a8
+                            a4
                             \pp
                             \<
 
@@ -786,20 +782,20 @@
                         \startTrillSpan e'
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 9]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            d'2
+                            d'1
                             \f
                             \stopTrillSpan
 
                             \clef "treble"
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            e''4
+                            e''2
                             \mf
                             \>
                             - \abjad-dashed-line-with-hook
@@ -811,7 +807,7 @@
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            f'4
+                            f'2
 
                         }
                         % [Voice 1 measure 10]                                 %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
@@ -835,13 +831,13 @@
                         \pp
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 11]                             %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            ef2
+                            ef1
                             \mp
                             ^ \markup {
                                 \upright
@@ -852,7 +848,7 @@
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            d,2
+                            d,1
                             \p
                             - \abjad-dashed-line-with-hook
                             - \tweak bound-details.left.text \markup \concat { \upright
@@ -1231,47 +1227,43 @@
                         ]
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
 
                             \clef "bass"
-                            \override Staff.Stem.stemlet-length = 0.75
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            bf,8
+                            bf,4
                             \stopTextSpan
-                            [
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            gf8
+                            gf4
 
-                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "8")
+                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "4")
                             \times 2/3 {
 
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-flat-markup
-                                af8
+                                af4
 
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \one-quarter-flat-markup
-                                ef8
+                                ef4
 
-                                \revert Staff.Stem.stemlet-length
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-natural-markup
-                                d8
-                                ]
+                                d4
 
                             }
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \one-quarter-sharp-markup
-                            d'4.
+                            d'2.
                             \f
 
                             \pitchedTrill
-                            a8
+                            a4
                             \mf
                             \>
                             \startTrillSpan e'
@@ -1486,19 +1478,19 @@
                         :32
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 27]                             %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak NoteHead.style #'harmonic-mixed
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            g'2
+                            g'1
                             :32
 
                             \pitchedTrill
                             \tweak NoteHead.style #'triangle
-                            ef'4
+                            ef'2
                             :32
                             \startTrillSpan f'
 
@@ -1506,7 +1498,7 @@
                             \tweak NoteHead.style #'default
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            df''4
+                            df''2
                             :32
                             \f
                             \stopTrillSpan
@@ -1529,14 +1521,14 @@
                         :32
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 29]                             %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak NoteHead.style #'triangle
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            bf2
+                            bf1
                             :32
                             \p
                             ^ \markup {
@@ -1548,7 +1540,7 @@
                             \tweak NoteHead.style #'harmonic-mixed
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            df'2
+                            df'1
                             :32
                             \pp
                             \<
@@ -1676,60 +1668,56 @@
                         ]
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
 
-                            \override Staff.Stem.stemlet-length = 0.75
                             \tweak NoteHead.style #'harmonic-mixed
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            ef8
+                            ef4
                             :32
-                            [
 
                             \pitchedTrill
                             \tweak NoteHead.style #'harmonic-mixed
-                            e,8
+                            e,4
                             :32
                             \startTrillSpan gf,
 
-                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "8")
+                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) "4")
                             \times 2/3 {
 
                                 \tweak NoteHead.style #'triangle
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-natural-markup
-                                e,8
+                                e,4
                                 :32
                                 \stopTrillSpan
 
                                 \tweak NoteHead.style #'triangle
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-natural-markup
-                                c8
+                                c4
                                 :32
 
-                                \revert Staff.Stem.stemlet-length
                                 \tweak NoteHead.style #'triangle
                                 \tweak Accidental.stencil #ly:text-interface::print
                                 \tweak Accidental.text \abjad-natural-markup
-                                d8
+                                d4
                                 :32
-                                ]
 
                             }
 
                             \tweak NoteHead.style #'triangle
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \one-quarter-sharp-markup
-                            a,4.
+                            a,2.
                             :32
                             \f
 
                             \tweak NoteHead.style #'triangle
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            af,8
+                            af,4
                             :32
                             \mf
                             \>
@@ -1949,21 +1937,21 @@
                         :32
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 4 5) "4")
-                        \times 5/4 {
+                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 8 5) "4")
+                        \times 5/8 {
                             % [Voice 1 measure 36]                             %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \tweak NoteHead.style #'harmonic-mixed
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
-                            e''2
+                            e''1
                             :32
                             \mf
 
                             \tweak NoteHead.style #'triangle
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
-                            df''4
+                            df''2
                             :32
                             \ff
                             \>
@@ -1971,7 +1959,7 @@
                             \tweak NoteHead.style #'triangle
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \one-quarter-sharp-markup
-                            g''4
+                            g''2
                             :32
 
                         }

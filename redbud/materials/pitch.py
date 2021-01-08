@@ -132,9 +132,7 @@ segment_one += segment_one.retrograde().rotate(2).transpose(3)
 
 segment_one += segment_one.transpose(3)
 
-segment_two = evans.combination_multiples(
-    [1, 1, 7, 9, 13, 25], combination_size=2
-).sorted()
+segment_two = evans.Sequence([1, 1, 7, 9, 13, 25]).combination_multiplication(2).sort()
 
 octave_handler = evans.PitchHandler(
     pitch_list=octaves,
