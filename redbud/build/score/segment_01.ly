@@ -42,87 +42,84 @@
                   \abjad-metronome-mark-markup #2 #0 #1 #"128"
                   \hspace #1
                   \upright [
-                  {
-                \score
+                  { \score
+                {
+                    \new Score
+                    \with
                     {
-                        \new Score
-                        \with
-                        {
-                            \override SpacingSpanner.spacing-increment = #0.5
-                            proportionalNotationDuration = ##f
-                        }
-                        <<
-                            \new RhythmicStaff
-                            \with
-                            {
-                                \remove Time_signature_engraver
-                                \remove Staff_symbol_engraver
-                                \override Stem.direction = #up
-                                \override Stem.length = #5
-                                \override TupletBracket.bracket-visibility = ##t
-                                \override TupletBracket.direction = #up
-                                \override TupletBracket.minimum-length = #4
-                                \override TupletBracket.padding = #1.25
-                                \override TupletBracket.shorten-pair = #'(-1 . -1.5)
-                                \override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods
-                                \override TupletNumber.font-size = #0
-                                \override TupletNumber.text = #tuplet-number::calc-fraction-text
-                                tupletFullLength = ##t
-                            }
-                            {
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \times 3/4 {
-                                    c'4
-                                }
-                            }
-                        >>
-                        \layout {
-                            indent = #0
-                            ragged-right = ##t
-                        }
+                        \override SpacingSpanner.spacing-increment = 0.5
+                        proportionalNotationDuration = ##f
                     }
-                =
-                \hspace
-                    #-0.5
-                \score
-                    {
-                        \new Score
+                    <<
+                        \new RhythmicStaff
                         \with
                         {
-                            \override SpacingSpanner.spacing-increment = #0.5
-                            proportionalNotationDuration = ##f
+                            \remove Time_signature_engraver
+                            \remove Staff_symbol_engraver
+                            \override Stem.direction = #up
+                            \override Stem.length = 5
+                            \override TupletBracket.bracket-visibility = ##t
+                            \override TupletBracket.direction = #up
+                            \override TupletBracket.minimum-length = 4
+                            \override TupletBracket.padding = 1.25
+                            \override TupletBracket.shorten-pair = #'(-1 . -1.5)
+                            \override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods
+                            \override TupletNumber.font-size = 0
+                            \override TupletNumber.text = #tuplet-number::calc-fraction-text
+                            tupletFullLength = ##t
                         }
-                        <<
-                            \new RhythmicStaff
-                            \with
-                            {
-                                \remove Time_signature_engraver
-                                \remove Staff_symbol_engraver
-                                \override Stem.direction = #up
-                                \override Stem.length = #5
-                                \override TupletBracket.bracket-visibility = ##t
-                                \override TupletBracket.direction = #up
-                                \override TupletBracket.minimum-length = #4
-                                \override TupletBracket.padding = #1.25
-                                \override TupletBracket.shorten-pair = #'(-1 . -1.5)
-                                \override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods
-                                \override TupletNumber.font-size = #0
-                                \override TupletNumber.text = #tuplet-number::calc-fraction-text
-                                tupletFullLength = ##t
+                        {
+                            \tweak text #tuplet-number::calc-fraction-text
+                            \times 3/4 {
+                                c'4
                             }
-                            {
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 2/3 {
-                                    c'2
-                                }
-                            }
-                        >>
-                        \layout {
-                            indent = #0
-                            ragged-right = ##t
                         }
+                    >>
+                    \layout {
+                        indent = 0
+                        ragged-right = ##t
                     }
                 }
+            =
+            \hspace #-0.5
+            \score
+                {
+                    \new Score
+                    \with
+                    {
+                        \override SpacingSpanner.spacing-increment = 0.5
+                        proportionalNotationDuration = ##f
+                    }
+                    <<
+                        \new RhythmicStaff
+                        \with
+                        {
+                            \remove Time_signature_engraver
+                            \remove Staff_symbol_engraver
+                            \override Stem.direction = #up
+                            \override Stem.length = 5
+                            \override TupletBracket.bracket-visibility = ##t
+                            \override TupletBracket.direction = #up
+                            \override TupletBracket.minimum-length = 4
+                            \override TupletBracket.padding = 1.25
+                            \override TupletBracket.shorten-pair = #'(-1 . -1.5)
+                            \override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods
+                            \override TupletNumber.font-size = 0
+                            \override TupletNumber.text = #tuplet-number::calc-fraction-text
+                            tupletFullLength = ##t
+                        }
+                        {
+                            \tweak edge-height #'(0.7 . 0)
+                            \times 2/3 {
+                                c'2
+                            }
+                        }
+                    >>
+                    \layout {
+                        indent = 0
+                        ragged-right = ##t
+                    }
+                } }
                   \hspace #0.5
                   \upright ]
               }
@@ -383,7 +380,7 @@
                         % [Voice 1 measure 1]                                  %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                         \set Staff.instrumentName =                            %! applying staff names and clefs
-                        \scordatura                                            %! applying staff names and clefs
+                        \markup { \hcenter-in #14 \scordatura }                %! applying staff names and clefs
                         \clef "bass"
                         \tweak Accidental.stencil #ly:text-interface::print
                         \tweak Accidental.text \abjad-flat-markup
@@ -391,10 +388,9 @@
                         \pp
                         \<
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            IV \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright IV \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \pitchedTrill
@@ -461,15 +457,7 @@
                                 d
                             >4
                             \ff
-                            ^ \markup {
-                                \upright
-                                    \center-column
-                                        {
-                                            II
-                                            III
-                                            IV
-                                        }
-                                }
+                            ^ \markup \upright \center-column {II III IV}
                             \>
                             \stopTextSpan
 
@@ -477,10 +465,9 @@
                             \tweak Accidental.text \abjad-natural-markup
                             d,4
                             - \abjad-dashed-line-with-hook
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                IV \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright IV \hspace #0.5 }
                             - \tweak bound-details.right.padding 3
-                            - \tweak staff-padding #4.5
+                            - \tweak staff-padding 4.5
                             \startTextSpan
 
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -521,10 +508,9 @@
                         \stopTextSpan
                         ~
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            I \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright I \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \override Staff.Stem.stemlet-length = 0.75
@@ -573,14 +559,7 @@
                                     \tweak Accidental.text \abjad-natural-markup
                                     g'
                                 >4
-                                ^ \markup {
-                                    \upright
-                                        \center-column
-                                            {
-                                                I
-                                                II
-                                            }
-                                    }
+                                ^ \markup \upright \center-column {I II}
                                 \stopTextSpan
 
                             }
@@ -628,7 +607,7 @@
                                 \tweak Accidental.text \abjad-flat-markup
                                 bf'
                                 \tweak Accidental.stencil #ly:text-interface::print
-                                \tweak Accidental.text #'\abjad-flat-markup
+                                \tweak Accidental.text \abjad-flat-markup
                                 \tweak style #'harmonic
                                 df''
                             >8
@@ -688,10 +667,7 @@
                             \tweak Accidental.text \abjad-natural-markup
                             a8
                             - \accent
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
                             [
 
                             \revert Staff.Stem.stemlet-length
@@ -732,10 +708,7 @@
 
                             \pitchedTrill
                             df''8
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
                             \startTrillSpan af''
 
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -746,10 +719,7 @@
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \one-quarter-sharp-markup
                             e''8
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
 
                             \revert Staff.Stem.stemlet-length
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -799,10 +769,9 @@
                             \mf
                             \>
                             - \abjad-dashed-line-with-hook
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                sv. \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright sv. \hspace #0.5 }
                             - \tweak bound-details.right.padding 3
-                            - \tweak staff-padding #4.5
+                            - \tweak staff-padding 4.5
                             \startTextSpan
 
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -819,10 +788,9 @@
                         \p
                         \stopTextSpan
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            IV \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright IV \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \tweak Accidental.stencil #ly:text-interface::print
@@ -839,10 +807,7 @@
                             \tweak Accidental.text \abjad-flat-markup
                             ef1
                             \mp
-                            ^ \markup {
-                                \upright
-                                    III
-                                }
+                            ^ \markup \upright III
                             \>
                             \stopTextSpan
 
@@ -851,10 +816,9 @@
                             d,1
                             \p
                             - \abjad-dashed-line-with-hook
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                IV \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright IV \hspace #0.5 }
                             - \tweak bound-details.right.padding 3
-                            - \tweak staff-padding #4.5
+                            - \tweak staff-padding 4.5
                             \startTextSpan
 
                         }
@@ -868,10 +832,7 @@
                         \tweak Accidental.stencil #ly:text-interface::print
                         \tweak Accidental.text \abjad-flat-markup
                         bf4
-                        ^ \markup {
-                            \upright
-                                III
-                            }
+                        ^ \markup \upright III
                         \stopTextSpan
 
                         \tweak Accidental.stencil #ly:text-interface::print
@@ -888,20 +849,13 @@
                         \tweak Accidental.text \abjad-natural-markup
                         f,2.
                         :32
-                        ^ \markup {
-                            \upright
-                                "sempre IV"
-                            }
-                        ^ \markup {
-                            \upright
-                                XFB.
-                            }
+                        ^ \markup \upright {sempre IV}
+                        ^ \markup \upright XFB.
                         ~
                         - \abjad-solid-line-with-arrow
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            sp. \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright sp. \hspace #0.5 }
                         - \tweak bound-details.right.padding 1.5
-                        - \tweak staff-padding #6
+                        - \tweak staff-padding 6
                         \startTextSpan
                         % [Voice 1 measure 13]                                 %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
@@ -909,17 +863,13 @@
                         \tweak Accidental.text \abjad-natural-markup
                         f,1
                         :32
-                        ^ \markup {
-                            \upright
-                                TO.
-                            }
+                        ^ \markup \upright TO.
                         \stopTextSpan
                         ~
                         - \abjad-solid-line-with-arrow
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            ord. \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright ord. \hspace #0.5 }
                         - \tweak bound-details.right.padding 1.5
-                        - \tweak staff-padding #6
+                        - \tweak staff-padding 6
                         \startTextSpan
 
                         \tweak text #tuplet-number::calc-fraction-text
@@ -934,10 +884,9 @@
                             \stopTextSpan
                             \glissando                                         %! abjad.glissando(7)
                             - \abjad-solid-line-with-arrow
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                st. \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright st. \hspace #0.5 }
                             - \tweak bound-details.right.padding 1.5
-                            - \tweak staff-padding #6
+                            - \tweak staff-padding 6
                             \startTextSpan
 
                             \tweak NoteHead.style #'harmonic-mixed
@@ -955,10 +904,7 @@
                             bf,2
                             :32
                             \mf
-                            ^ \markup {
-                                \upright
-                                    IT.
-                                }
+                            ^ \markup \upright IT.
                             \glissando                                         %! abjad.glissando(7)
 
                             \tweak NoteHead.style #'triangle
@@ -984,10 +930,7 @@
                         \tweak Accidental.text \abjad-flat-markup
                         af,2.
                         :32
-                        ^ \markup {
-                            \upright
-                                XFB.
-                            }
+                        ^ \markup \upright XFB.
                         ~
                         % [Voice 1 measure 15]                                 %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
@@ -1047,10 +990,9 @@
                         \stopTextSpan
                         ~
                         - \abjad-solid-line-with-arrow
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            sp. \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright sp. \hspace #0.5 }
                         - \tweak bound-details.right.padding 1.5
-                        - \tweak staff-padding #6
+                        - \tweak staff-padding 6
                         \startTextSpan
 
                         \tweak text #tuplet-number::calc-fraction-text
@@ -1072,10 +1014,9 @@
                             \stopTextSpan
                             \glissando                                         %! abjad.glissando(7)
                             - \abjad-solid-line-with-arrow
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                ord. \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright ord. \hspace #0.5 }
                             - \tweak bound-details.right.padding 1.5
-                            - \tweak staff-padding #6
+                            - \tweak staff-padding 6
                             \startTextSpan
 
                         }
@@ -1086,10 +1027,7 @@
                         a,2.
                         :32
                         \f
-                        ^ \markup {
-                            \upright
-                                IT.
-                            }
+                        ^ \markup \upright IT.
                         \glissando                                             %! abjad.glissando(7)
 
                         \tweak Accidental.stencil #ly:text-interface::print
@@ -1102,10 +1040,9 @@
                         \stopTextSpan
                         ~
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            st. \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright st. \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #6
+                        - \tweak staff-padding 6
                         \startTextSpan
                         % [Voice 1 measure 20]                                 %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
@@ -1143,20 +1080,13 @@
                             \tweak Accidental.text \one-quarter-sharp-markup
                             g4
                             \p
-                            ^ \markup {
-                                \upright
-                                    "accel. a 38"
-                                }
-                            ^ \markup {
-                                \upright
-                                    II
-                                }
+                            ^ \markup \upright {accel. a 38}
+                            ^ \markup \upright II
                             \<
                             - \abjad-dashed-line-with-hook
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                sv. \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright sv. \hspace #0.5 }
                             - \tweak bound-details.right.padding 3
-                            - \tweak staff-padding #4.5
+                            - \tweak staff-padding 4.5
                             \startTextSpan
 
                             \tweak NoteHead.style #'harmonic-mixed
@@ -1278,28 +1208,19 @@
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
                             df'8
-                            ^ \markup {
-                                \upright
-                                    II
-                                }
+                            ^ \markup \upright II
                             [
                             \stopTrillSpan
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
                             gf'8
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-natural-markup
                             d'8
-                            ^ \markup {
-                                \upright
-                                    II
-                                }
+                            ^ \markup \upright II
 
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
@@ -1316,18 +1237,12 @@
                             \tweak Accidental.text \abjad-natural-markup
                             c''4.
                             \p
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
 
                             \pitchedTrill
                             c'8
                             \pp
-                            ^ \markup {
-                                \upright
-                                    "II  "
-                                }
+                            ^ \markup \upright {"II  "} 
                             \<
                             \startTrillSpan g'
 
@@ -1341,10 +1256,7 @@
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
                             bf'8
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
                             [
                             \stopTrillSpan
 
@@ -1352,10 +1264,7 @@
                             \tweak Accidental.stencil #ly:text-interface::print
                             \tweak Accidental.text \abjad-flat-markup
                             ef8
-                            ^ \markup {
-                                \upright
-                                    IV
-                                }
+                            ^ \markup \upright IV
                             ]
 
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -1465,10 +1374,9 @@
                         \ff
                         \>
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            I \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright I \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \tweak NoteHead.style #'harmonic-mixed
@@ -1531,10 +1439,7 @@
                             bf1
                             :32
                             \p
-                            ^ \markup {
-                                \upright
-                                    II
-                                }
+                            ^ \markup \upright II
                             \stopTextSpan
 
                             \tweak NoteHead.style #'harmonic-mixed
@@ -1591,10 +1496,7 @@
                             \tweak Accidental.text \abjad-natural-markup
                             g'4
                             :32
-                            ^ \markup {
-                                \upright
-                                    I
-                                }
+                            ^ \markup \upright I
 
                             \clef "bass"
                             \tweak NoteHead.style #'triangle
@@ -1990,10 +1892,9 @@
                             \p
                             \>
                             - \abjad-dashed-line-with-hook
-                            - \tweak bound-details.left.text \markup \concat { \upright
-                                clt. \hspace #0.5 }
+                            - \tweak bound-details.left.text \markup \concat { \upright clt. \hspace #0.5 }
                             - \tweak bound-details.right.padding 3
-                            - \tweak staff-padding #4.5
+                            - \tweak staff-padding 4.5
                             \startTextSpan
 
                             \tweak Accidental.stencil #ly:text-interface::print
@@ -2056,10 +1957,9 @@
                         \stopTextSpan
                         ~
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            I \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright I \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \tweak Accidental.stencil #ly:text-interface::print
@@ -2100,10 +2000,9 @@
                         f,2
                         ~
                         - \abjad-dashed-line-with-hook
-                        - \tweak bound-details.left.text \markup \concat { \upright
-                            IV \hspace #0.5 }
+                        - \tweak bound-details.left.text \markup \concat { \upright IV \hspace #0.5 }
                         - \tweak bound-details.right.padding 3
-                        - \tweak staff-padding #4.5
+                        - \tweak staff-padding 4.5
                         \startTextSpan
 
                         \tweak text #tuplet-number::calc-fraction-text
@@ -2154,10 +2053,7 @@
                         \tweak Accidental.text \abjad-flat-markup
                         af1.
                         \mf
-                        ^ \markup {
-                            \upright
-                                "accel. al fino"
-                            }
+                        ^ \markup \upright {accel. al fino}
                         \stopTextSpan
 
                         \clef "tenorvarC"
@@ -2165,10 +2061,7 @@
                         \tweak Accidental.text \abjad-natural-markup
                         a'2.
                         \p
-                        ^ \markup {
-                            \upright
-                                I
-                            }
+                        ^ \markup \upright I
                         \>
                         ~
                         % [Voice 1 measure 48]                                 %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
@@ -2190,10 +2083,7 @@
                         \tweak Accidental.text \abjad-flat-markup
                         df'8
                         \mp
-                        ^ \markup {
-                            \upright
-                                II
-                            }
+                        ^ \markup \upright II
                         \>
                         ~
                         ]
@@ -2221,10 +2111,7 @@
                             \tweak Accidental.text \abjad-natural-markup
                             c''4
                             \mf
-                            ^ \markup {
-                                \upright
-                                    "I al fino"
-                                }
+                            ^ \markup \upright {I al fino}
                             \<
                             ~
 
@@ -2261,10 +2148,7 @@
                         \tweak Accidental.text \abjad-flat-markup
                         af''2
                         \ff
-                        ^ \markup {
-                            \upright
-                                "scratch al fino"
-                            }
+                        ^ \markup \upright {scratch al fino}
                         - \tweak stencil #abjad-flared-hairpin
                         \<
                         ~
@@ -2319,10 +2203,7 @@
 
                         \once \override MultiMeasureRest.color = #white        %! applying ending skips
                         R1 * 1/16
-                        ^ \markup {                                            %! applying ending skips
-                            \musicglyph                                        %! applying ending skips
-                                #"scripts.ushortfermata"                       %! applying ending skips
-                            }                                                  %! applying ending skips
+                        ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                         \bar "|."
                         \stopStaff                                             %! applying ending skips
 

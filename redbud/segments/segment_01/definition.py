@@ -11,10 +11,10 @@ import redbud
 def _make_artificial_harmonics(chord):
     if isinstance(chord, abjad.Chord):
         head = chord.note_heads[-1]
-        abjad.tweak(head).style = "harmonic"
+        abjad.tweak(head).style = "#'harmonic"
     else:
         head = chord.note_head
-        abjad.tweak(head).style = "harmonic-mixed"
+        abjad.tweak(head).style = "#'harmonic-mixed"
 
 
 def _add_accents(selections):
@@ -116,7 +116,7 @@ trills = evans.TrillHandler(
 )
 
 start_text_span1 = abjad.StartTextSpan(
-    left_text=abjad.Markup("IV").upright(),
+    left_text=abjad.Markup(r"\upright IV", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
@@ -124,66 +124,68 @@ abjad.tweak(start_text_span1).staff_padding = 4.5
 stop_text_span1 = abjad.StopTextSpan()
 
 start_text_span2 = abjad.StartTextSpan(
-    left_text=abjad.Markup("IV").upright(),
+    left_text=abjad.Markup(r"\upright IV", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_text_span2).staff_padding = 4.5
 
 start_text_span3 = abjad.StartTextSpan(
-    left_text=abjad.Markup("I").upright(),
+    left_text=abjad.Markup(r"\upright I", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_text_span3).staff_padding = 4.5
 
 start_bow_mark1 = abjad.StartTextSpan(
-    left_text=abjad.Markup("clt.").upright(),
+    left_text=abjad.Markup(r"\upright clt.", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_bow_mark1).staff_padding = 4.5
 
 sv = abjad.StartTextSpan(
-    left_text=abjad.Markup("sv.").upright(),
+    left_text=abjad.Markup(r"\upright sv.", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(sv).staff_padding = 4.5
 
 pont = abjad.StartTextSpan(
-    left_text=abjad.Markup("sp.").upright(),
+    left_text=abjad.Markup(r"\upright sp.", literal=True),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(pont).staff_padding = 6
 
 ord = abjad.StartTextSpan(
-    left_text=abjad.Markup("ord.").upright(),
+    left_text=abjad.Markup(r"\upright ord.", literal=True),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(ord).staff_padding = 6
 
 tast = abjad.StartTextSpan(
-    left_text=abjad.Markup("st.").upright(),
+    left_text=abjad.Markup(r"\upright st.", literal=True),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(tast).staff_padding = 6
 
 tast_final = abjad.StartTextSpan(
-    left_text=abjad.Markup("st.").upright(),
+    left_text=abjad.Markup(r"\upright st.", literal=True),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(tast_final).staff_padding = 6
 
-strings1 = abjad.Markup.center_column(["II", "III", "IV"]).upright()
-strings1 = abjad.Markup(strings1, direction=abjad.Up)
+strings1 = abjad.Markup(
+    r"\markup \upright \center-column {II III IV}", direction=abjad.Up, literal=True
+)
 
-strings2 = abjad.Markup.center_column(["I", "II"]).upright()
-strings2 = abjad.Markup(strings2, direction=abjad.Up)
+strings2 = abjad.Markup(
+    r"\markup \upright \center-column {I II}", direction=abjad.Up, literal=True
+)
 
 maker = evans.SegmentMaker(
     instruments=redbud.instruments,
@@ -215,42 +217,42 @@ maker = evans.SegmentMaker(
         evans.attach(
             "Voice 1",
             start_text_span1,
-            baca.leaf(0),
+            baca.selectors.leaf(0),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(8),
+            baca.selectors.leaf(8),
         ),
         evans.attach(
             "Voice 1",
             strings1,
-            baca.leaf(8),
+            baca.selectors.leaf(8),
         ),
         evans.attach(
             "Voice 1",
             start_text_span2,
-            baca.leaf(9),
+            baca.selectors.leaf(9),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(16),
+            baca.selectors.leaf(16),
         ),
         evans.attach(
             "Voice 1",
             start_text_span3,
-            baca.leaf(16),
+            baca.selectors.leaf(16),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(23),
+            baca.selectors.leaf(23),
         ),
         evans.attach(
             "Voice 1",
             strings2,
-            baca.leaf(23),
+            baca.selectors.leaf(23),
         ),
         evans.call(
             "Voice 1",
@@ -260,22 +262,22 @@ maker = evans.SegmentMaker(
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(2),
+            baca.selectors.leaf(2),
         ),
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(5),
+            baca.selectors.leaf(5),
         ),
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(6),
+            baca.selectors.leaf(6),
         ),
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(30),
+            baca.selectors.leaf(30),
         ),
         evans.call(
             "Voice 1",
@@ -284,387 +286,399 @@ maker = evans.SegmentMaker(
                 forget=False,
                 apply_to="runs",
             ),
-            baca.logical_ties(pitched=True).get([_ for _ in range(62, 76)]),
+            baca.selectors.logical_ties(pitched=True).get([_ for _ in range(62, 76)]),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("accel. a 38", direction=abjad.Up).upright(),
-            baca.leaf(84),
+            abjad.Markup(
+                r"\markup \upright {accel. a 38}", direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(84),
         ),
         evans.attach(
             "Voice 1",
             start_bow_mark1,
-            baca.leaf(-42),
+            baca.selectors.leaf(-42),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(-33),
+            baca.selectors.leaf(-33),
         ),
         evans.attach(
             "Voice 1",
             start_text_span3,
-            baca.leaf(197),
+            baca.selectors.leaf(197),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(202),
+            baca.selectors.leaf(202),
         ),
         evans.attach(
             "Voice 1",
             start_text_span1,
-            baca.leaf(203),
+            baca.selectors.leaf(203),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(209),
+            baca.selectors.leaf(209),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(210),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(210),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("II", direction=abjad.Up).upright(),
-            baca.leaf(213),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(213),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("accel. al fino", direction=abjad.Up).upright(),
-            baca.leaf(209),
+            abjad.Markup(
+                r"\markup \upright {accel. al fino}", direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(209),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I al fino", direction=abjad.Up).upright(),
-            baca.leaf(217),
+            abjad.Markup(
+                r"\markup \upright {I al fino}", direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(217),
         ),
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(207),
+            baca.selectors.leaf(207),
         ),
         evans.detach(
             "Voice 1",
             abjad.Dynamic("mf"),
-            baca.leaf(222),
+            baca.selectors.leaf(222),
         ),
         evans.attach(
             "Voice 1",
             abjad.Dynamic("ff"),
-            baca.leaf(222),
+            baca.selectors.leaf(222),
         ),
         evans.detach(
             "Voice 1",
             abjad.Dynamic("p"),
-            baca.leaf(225),
+            baca.selectors.leaf(225),
         ),
         evans.attach(
             "Voice 1",
             abjad.Dynamic("fff"),
-            baca.leaf(227),
+            baca.selectors.leaf(227),
         ),
         evans.detach(
             "Voice 1",
             abjad.StartHairpin(">"),
-            baca.leaf(222),
+            baca.selectors.leaf(222),
         ),
         evans.attach(
             "Voice 1",
             abjad.StartHairpin("<|"),
-            baca.leaf(222),
+            baca.selectors.leaf(222),
         ),
         evans.detach(
             "Voice 1",
             abjad.StopHairpin(),
-            baca.leaf(225),
+            baca.selectors.leaf(225),
         ),
         evans.attach(
             "Voice 1",
             abjad.StopHairpin(),
-            baca.leaf(227),
+            baca.selectors.leaf(227),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("scratch al fino", direction=abjad.Up).upright(),
-            baca.leaf(222),
+            abjad.Markup(
+                r"\markup \upright {scratch al fino}", direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(222),
         ),
         evans.call(
             "Voice 1",
             _make_artificial_harmonics,
-            baca.leaf(30),
+            baca.selectors.leaf(30),
         ),
         evans.attach(
             "Voice 1",
             abjad.Articulation("accent"),
-            baca.leaf(38),
+            baca.selectors.leaf(38),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(38),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(38),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(44),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(44),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(46),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(46),
         ),
         evans.call(
             "Voice 1",
             _make_artificial_harmonics,
-            baca.leaf(51),
+            baca.selectors.leaf(51),
         ),
         evans.attach(
             "Voice 1",
             sv,
-            baca.leaf(53),
+            baca.selectors.leaf(53),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(55),
+            baca.selectors.leaf(55),
         ),
         evans.attach(
             "Voice 1",
             start_text_span1,
-            baca.leaf(55),
+            baca.selectors.leaf(55),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(57),
+            baca.selectors.leaf(57),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("III", direction=abjad.Up).upright(),
-            baca.leaf(57),
+            abjad.Markup(r"\markup \upright III", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(57),
         ),
         evans.attach(
             "Voice 1",
             start_text_span1,
-            baca.leaf(58),
+            baca.selectors.leaf(58),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(60),
+            baca.selectors.leaf(60),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("III", direction=abjad.Up).upright(),
-            baca.leaf(60),
+            abjad.Markup(r"\markup \upright III", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(60),
         ),
         evans.attach(
             "Voice 1",
             abjad.Glissando(),
-            baca.leaf(61),
+            baca.selectors.leaf(61),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("sempre IV", direction=abjad.Up).upright(),
-            baca.leaf(63),
+            abjad.Markup(
+                r"\markup \upright {sempre IV}", direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(63),
         ),
         evans.call(
             "Voice 1",
             _add_tremolos,
-            baca.leaves().get([_ for _ in range(63, 84)]),
+            baca.selectors.leaves().get([_ for _ in range(63, 84)]),
         ),
         evans.call(
             "Voice 1",
             _add_tremolos,
-            baca.leaves().get([_ for _ in range(124, 188)]),
+            baca.selectors.leaves().get([_ for _ in range(124, 188)]),
         ),
         evans.call(
             "Voice 1",
             _add_accents,
-            baca.leaves().get([_ for _ in range(71, 76)]),
+            baca.selectors.leaves().get([_ for _ in range(71, 76)]),
         ),
         evans.call(
             "Voice 1",
             _add_accents,
-            baca.leaves().get([_ for _ in range(80, 84)]),
+            baca.selectors.leaves().get([_ for _ in range(80, 84)]),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("XFB.", direction=abjad.Up).upright(),
-            baca.leaf(63),
+            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(63),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("TO.", direction=abjad.Up).upright(),
-            baca.leaf(64),
+            abjad.Markup(r"\markup \upright TO.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(64),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("IT.", direction=abjad.Up).upright(),
-            baca.leaf(67),
+            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(67),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("XFB.", direction=abjad.Up).upright(),
-            baca.leaf(70),
+            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(70),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("IT.", direction=abjad.Up).upright(),
-            baca.leaf(79),
+            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(79),
         ),
         evans.attach(
             "Voice 1",
             sv,
-            baca.leaf(84),
+            baca.selectors.leaf(84),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(95),
+            baca.selectors.leaf(95),
         ),
         evans.attach(
             "Voice 1",
             pont,
-            baca.leaf(63),
+            baca.selectors.leaf(63),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(64),
+            baca.selectors.leaf(64),
         ),
         evans.attach(
             "Voice 1",
             ord,
-            baca.leaf(64),
+            baca.selectors.leaf(64),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(65),
+            baca.selectors.leaf(65),
         ),
         evans.attach(
             "Voice 1",
             tast,
-            baca.leaf(65),
+            baca.selectors.leaf(65),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(76),
+            baca.selectors.leaf(76),
         ),
         evans.attach(
             "Voice 1",
             pont,
-            baca.leaf(76),
+            baca.selectors.leaf(76),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(78),
+            baca.selectors.leaf(78),
         ),
         evans.attach(
             "Voice 1",
             ord,
-            baca.leaf(78),
+            baca.selectors.leaf(78),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(80),
+            baca.selectors.leaf(80),
         ),
         evans.attach(
             "Voice 1",
             tast_final,
-            baca.leaf(80),
+            baca.selectors.leaf(80),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(89),
+            baca.selectors.leaf(89),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("II", direction=abjad.Up).upright(),
-            baca.leaf(84),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(84),
         ),
         evans.call(
             "Voice 1",
             note_head_handler,
-            baca.leaves().get([_ for _ in range(5, 8)]),
+            baca.selectors.leaves().get([_ for _ in range(5, 8)]),
         ),
         evans.call(
             "Voice 1",
             note_head_handler,
-            baca.leaves().get([_ for _ in range(66, 69)]),
+            baca.selectors.leaves().get([_ for _ in range(66, 69)]),
         ),
         evans.call(
             "Voice 1",
             note_head_handler,
-            baca.leaves().get([_ for _ in range(84, 95)]),
+            baca.selectors.leaves().get([_ for _ in range(84, 95)]),
         ),
         evans.call(
             "Voice 1",
             note_head_handler,
-            baca.leaves().get([_ for _ in range(124, 188)]),
+            baca.selectors.leaves().get([_ for _ in range(124, 188)]),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("II", direction=abjad.Up).upright(),
-            baca.leaf(102),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(102),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(103),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(103),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("II", direction=abjad.Up).upright(),
-            baca.leaf(104),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(104),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(107),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(107),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup('"II  "', direction=abjad.Up).upright(),
-            baca.leaf(108),
+            abjad.Markup(
+                r'\markup \upright {"II  "} ', direction=abjad.Up, literal=True
+            ),
+            baca.selectors.leaf(108),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(109),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(109),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("IV", direction=abjad.Up).upright(),
-            baca.leaf(110),
+            abjad.Markup(r"\markup \upright IV", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(110),
         ),
         evans.attach(
             "Voice 1",
             start_text_span3,
-            baca.leaf(126),
+            baca.selectors.leaf(126),
         ),
         evans.attach(
             "Voice 1",
             stop_text_span1,
-            baca.leaf(133),
+            baca.selectors.leaf(133),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("II", direction=abjad.Up).upright(),
-            baca.leaf(133),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(133),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup("I", direction=abjad.Up).upright(),
-            baca.leaf(140),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(140),
         ),
         evans.attach(
             "Voice 1",
@@ -674,7 +688,7 @@ maker = evans.SegmentMaker(
         evans.attach(
             "Global Context",
             mark,
-            baca.leaf(0),
+            baca.selectors.leaf(0),
         ),
         evans.attach(
             "Global Context",
@@ -688,7 +702,7 @@ maker = evans.SegmentMaker(
                 ),
                 modulated_beat=(abjad.Note("c'4")),
             ),
-            baca.leaf(5),
+            baca.selectors.leaf(5),
         ),
         evans.attach(
             "Global Context",
@@ -698,12 +712,12 @@ maker = evans.SegmentMaker(
                 right_note=(abjad.Note("c'4")),
                 modulated_beat=(abjad.Note("c'4")),
             ),
-            baca.leaf(7),
+            baca.selectors.leaf(7),
         ),
         evans.attach(
             "Global Context",
             mark,
-            baca.leaf(9),
+            baca.selectors.leaf(9),
         ),
         evans.attach(
             "Global Context",
@@ -715,7 +729,7 @@ maker = evans.SegmentMaker(
                 ),
                 modulated_beat=(abjad.Note("c'4")),
             ),
-            baca.leaf(11),
+            baca.selectors.leaf(11),
         ),
         evans.attach(
             "Global Context",
@@ -725,42 +739,42 @@ maker = evans.SegmentMaker(
                 right_note=(abjad.Note("c'8")),
                 modulated_beat=(abjad.Note("c'4")),
             ),
-            baca.leaf(20),
+            baca.selectors.leaf(20),
         ),
         evans.attach(
             "Global Context",
             mark2,
-            baca.leaf(37),
+            baca.selectors.leaf(37),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), 128),
-            baca.leaf(5),
+            baca.selectors.leaf(5),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), Fraction(256, 3)),
-            baca.leaf(7),
+            baca.selectors.leaf(7),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), 72),
-            baca.leaf(9),
+            baca.selectors.leaf(9),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), 96),
-            baca.leaf(11),
+            baca.selectors.leaf(11),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), 48),
-            baca.leaf(20),
+            baca.selectors.leaf(20),
         ),
         evans.attach(
             "Global Context",
             abjad.MetronomeMark((1, 4), 105),
-            baca.leaf(37),
+            baca.selectors.leaf(37),
         ),
     ],
     score_template=redbud.score,
