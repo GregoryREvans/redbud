@@ -18,13 +18,13 @@ def _make_artificial_harmonics(chord):
 
 
 def _add_accents(selections):
-    for leaf in abjad.select(selections).leaves():
+    for leaf in abjad.Selection(selections).leaves():
         accent = abjad.Articulation("accent")
         abjad.attach(accent, leaf)
 
 
 def _add_tremolos(selections):
-    for leaf in abjad.select(selections).leaves():
+    for leaf in abjad.Selection(selections).leaves():
         tremolo = abjad.StemTremolo(32)
         abjad.attach(tremolo, leaf)
 
@@ -116,7 +116,7 @@ trills = evans.TrillHandler(
 )
 
 start_text_span1 = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright IV", literal=True),
+    left_text=abjad.Markup(r"\upright IV"),
     style="dashed-line-with-hook",
     right_padding=3,
 )
@@ -124,68 +124,66 @@ abjad.tweak(start_text_span1).staff_padding = 4.5
 stop_text_span1 = abjad.StopTextSpan()
 
 start_text_span2 = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright IV", literal=True),
+    left_text=abjad.Markup(r"\upright IV"),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_text_span2).staff_padding = 4.5
 
 start_text_span3 = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright I", literal=True),
+    left_text=abjad.Markup(r"\upright I"),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_text_span3).staff_padding = 4.5
 
 start_bow_mark1 = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright clt.", literal=True),
+    left_text=abjad.Markup(r"\upright clt."),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(start_bow_mark1).staff_padding = 4.5
 
 sv = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright sv.", literal=True),
+    left_text=abjad.Markup(r"\upright sv."),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(sv).staff_padding = 4.5
 
 pont = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright sp.", literal=True),
+    left_text=abjad.Markup(r"\upright sp."),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(pont).staff_padding = 6
 
 ord = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright ord.", literal=True),
+    left_text=abjad.Markup(r"\upright ord."),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(ord).staff_padding = 6
 
 tast = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright st.", literal=True),
+    left_text=abjad.Markup(r"\upright st."),
     style="solid-line-with-arrow",
     right_padding=1.5,
 )
 abjad.tweak(tast).staff_padding = 6
 
 tast_final = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\upright st.", literal=True),
+    left_text=abjad.Markup(r"\upright st."),
     style="dashed-line-with-hook",
     right_padding=3,
 )
 abjad.tweak(tast_final).staff_padding = 6
 
 strings1 = abjad.Markup(
-    r"\markup \upright \center-column {II III IV}", direction=abjad.Up, literal=True
+    r"\markup \upright \center-column {II III IV}", direction=abjad.Up
 )
 
-strings2 = abjad.Markup(
-    r"\markup \upright \center-column {I II}", direction=abjad.Up, literal=True
-)
+strings2 = abjad.Markup(r"\markup \upright \center-column {I II}", direction=abjad.Up)
 
 maker = evans.SegmentMaker(
     instruments=redbud.instruments,
@@ -195,24 +193,24 @@ maker = evans.SegmentMaker(
         evans.call(
             "score",
             evans.SegmentMaker.transform_brackets,
-            abjad.select().components(abjad.Score),
+            lambda _: abjad.Selection(_).components(abjad.Score),
         ),
         evans.call(
             "score",
             evans.SegmentMaker.rewrite_meter,
-            abjad.select().components(abjad.Score),
+            lambda _: abjad.Selection(_).components(abjad.Score),
         ),
         "skips",
         evans.call(
             "score",
             redbud.octave_handler,
-            abjad.select().components(abjad.Score),
+            lambda _: abjad.Selection(_).components(abjad.Score),
         ),
         redbud.handler_commands,
         evans.call(
             "score",
             evans.SegmentMaker.beam_score,
-            abjad.select().components(abjad.Score),
+            lambda _: abjad.Selection(_).components(abjad.Score),
         ),
         evans.attach(
             "Voice 1",
@@ -257,7 +255,7 @@ maker = evans.SegmentMaker(
         evans.call(
             "Voice 1",
             trills,
-            abjad.select().logical_ties(pitched=True),
+            lambda _: abjad.Selection(_).logical_ties(pitched=True),
         ),
         evans.attach(
             "Voice 1",
@@ -290,9 +288,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r"\markup \upright {accel. a 38}", direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r"\markup \upright {accel. a 38}", direction=abjad.Up),
             baca.selectors.leaf(84),
         ),
         evans.attach(
@@ -327,26 +323,22 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(210),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up),
             baca.selectors.leaf(213),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r"\markup \upright {accel. al fino}", direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r"\markup \upright {accel. al fino}", direction=abjad.Up),
             baca.selectors.leaf(209),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r"\markup \upright {I al fino}", direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r"\markup \upright {I al fino}", direction=abjad.Up),
             baca.selectors.leaf(217),
         ),
         evans.attach(
@@ -396,9 +388,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r"\markup \upright {scratch al fino}", direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r"\markup \upright {scratch al fino}", direction=abjad.Up),
             baca.selectors.leaf(222),
         ),
         evans.call(
@@ -413,17 +403,17 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(38),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(44),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(46),
         ),
         evans.call(
@@ -453,7 +443,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright III", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright III", direction=abjad.Up),
             baca.selectors.leaf(57),
         ),
         evans.attach(
@@ -468,7 +458,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright III", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright III", direction=abjad.Up),
             baca.selectors.leaf(60),
         ),
         evans.attach(
@@ -478,9 +468,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r"\markup \upright {sempre IV}", direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r"\markup \upright {sempre IV}", direction=abjad.Up),
             baca.selectors.leaf(63),
         ),
         evans.call(
@@ -505,27 +493,27 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up),
             baca.selectors.leaf(63),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright TO.", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright TO.", direction=abjad.Up),
             baca.selectors.leaf(64),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up),
             baca.selectors.leaf(67),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright XFB.", direction=abjad.Up),
             baca.selectors.leaf(70),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright IT.", direction=abjad.Up),
             baca.selectors.leaf(79),
         ),
         evans.attach(
@@ -600,7 +588,7 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up),
             baca.selectors.leaf(84),
         ),
         evans.call(
@@ -625,39 +613,37 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up),
             baca.selectors.leaf(102),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(103),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up),
             baca.selectors.leaf(104),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(107),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(
-                r'\markup \upright {"II  "} ', direction=abjad.Up, literal=True
-            ),
+            abjad.Markup(r'\markup \upright {"II  "} ', direction=abjad.Up),
             baca.selectors.leaf(108),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(109),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright IV", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright IV", direction=abjad.Up),
             baca.selectors.leaf(110),
         ),
         evans.attach(
@@ -672,18 +658,18 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright II", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright II", direction=abjad.Up),
             baca.selectors.leaf(133),
         ),
         evans.attach(
             "Voice 1",
-            abjad.Markup(r"\markup \upright I", direction=abjad.Up, literal=True),
+            abjad.Markup(r"\markup \upright I", direction=abjad.Up),
             baca.selectors.leaf(140),
         ),
         evans.attach(
             "Voice 1",
             invisible_command,
-            abjad.select().leaf(-1, pitched=True),
+            lambda _: abjad.Selection(_).leaf(-1, pitched=True),
         ),
         evans.attach(
             "Global Context",
